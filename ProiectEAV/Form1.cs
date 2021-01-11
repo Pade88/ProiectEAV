@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProiectEAV
@@ -45,6 +47,9 @@ namespace ProiectEAV
                 if (OficiiPostale.Text == Convert.ToString(dt.Rows[i]["denumire"]))
                 {
                     webView1.Navigate(Convert.ToString(dt.Rows[i]["link_gm"]));
+                    textBoxInfo.Text = Convert.ToString(dt.Rows[i]["denumire"]) + " este un " + Convert.ToString(dt.Rows[i]["tip"])
+                        + ". \nAdresa acestei unitati postale este in " + Convert.ToString(dt.Rows[i]["adresa"]) + ". \nCodul postal al acestei locatii este " + Convert.ToString(dt.Rows[i]["cod_postal"]) +
+                        "\n Adresa de email este: " + Convert.ToString(dt.Rows[i]["mail"]);
                     break;
                 }
             }
@@ -64,6 +69,42 @@ namespace ProiectEAV
                 {
                     webView1.Navigate(Convert.ToString(dt.Rows[i]["link_gsv"]));
                     break;
+                }
+            }
+        }
+
+        // Executia e din acest stackframe e oprita cat ShowDialog() e activa
+        // Cand Dialogul de introducere in BD se inchide, executia se reia aici
+        // Baza de date este actualizata cand un element este introdus
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form dialog = new FormDBIN();
+            dialog.ShowDialog();
+            LoadData();
+        }
+
+        private void comboBoxOrase_MouseClick(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (!comboBoxOrase.Items.Contains(Convert.ToString(dt.Rows[i]["adresa"]).Split(',')[0]))
+                    comboBoxOrase.Items.Add(Convert.ToString(dt.Rows[i]["adresa"]).Split(',')[0]);
+            }
+        }
+
+        private void comboBoxOrase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxOrase.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (comboBoxOrase.Text == Convert.ToString(dt.Rows[i]["adresa"]).Split(',')[0])
+                {
+                    listBoxOrase.Items.Add(Convert.ToString(dt.Rows[i]["denumire"]) 
+                       + "; " + Convert.ToString(dt.Rows[i]["tip"])
+                       + "; " + Convert.ToString(dt.Rows[i]["adresa"])
+                       + "; " + Convert.ToString(dt.Rows[i]["cod_postal"])
+                       + "; " + Convert.ToString(dt.Rows[i]["mail"]));
+                    listBoxOrase.Items.Add(" "); // @todo, de adaugat linie noua, \n nu merge
                 }
             }
         }
