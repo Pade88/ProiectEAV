@@ -46,7 +46,16 @@ namespace ProiectEAV
             {
                 if (OficiiPostale.Text == Convert.ToString(dt.Rows[i]["denumire"]))
                 {
-                    webView1.Navigate(Convert.ToString(dt.Rows[i]["link_gm"]));
+                    if (!Convert.ToString(dt.Rows[i]["link_gm"]).Equals(""))
+                    {
+                        webView1.Navigate(Convert.ToString(dt.Rows[i]["link_gm"]));
+                    }
+                    else 
+                    {
+                        String searchQuerry = "https://www.google.com/maps/search/" + OficiiPostale.Text;
+                        webView1.Navigate(searchQuerry);
+                    }
+
                     textBoxInfo.Text = Convert.ToString(dt.Rows[i]["denumire"]) + " este un " + Convert.ToString(dt.Rows[i]["tip"])
                         + ". \nAdresa acestei unitati postale este in " + Convert.ToString(dt.Rows[i]["adresa"]) + ". \nCodul postal al acestei locatii este " + Convert.ToString(dt.Rows[i]["cod_postal"]) +
                         "\n Adresa de email este: " + Convert.ToString(dt.Rows[i]["mail"]);

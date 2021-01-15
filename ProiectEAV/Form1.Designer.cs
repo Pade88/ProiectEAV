@@ -39,6 +39,8 @@ namespace ProiectEAV
             this.button2 = new System.Windows.Forms.Button();
             this.comboBoxOrase = new System.Windows.Forms.ComboBox();
             this.listBoxOrase = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +99,7 @@ namespace ProiectEAV
             // 
             // textBoxInfo
             // 
-            this.textBoxInfo.Location = new System.Drawing.Point(971, 173);
+            this.textBoxInfo.Location = new System.Drawing.Point(975, 194);
             this.textBoxInfo.Multiline = true;
             this.textBoxInfo.Name = "textBoxInfo";
             this.textBoxInfo.Size = new System.Drawing.Size(272, 118);
@@ -116,7 +118,7 @@ namespace ProiectEAV
             // comboBoxOrase
             // 
             this.comboBoxOrase.FormattingEnabled = true;
-            this.comboBoxOrase.Location = new System.Drawing.Point(975, 332);
+            this.comboBoxOrase.Location = new System.Drawing.Point(975, 344);
             this.comboBoxOrase.Name = "comboBoxOrase";
             this.comboBoxOrase.Size = new System.Drawing.Size(268, 21);
             this.comboBoxOrase.TabIndex = 8;
@@ -131,12 +133,32 @@ namespace ProiectEAV
             this.listBoxOrase.Size = new System.Drawing.Size(268, 134);
             this.listBoxOrase.TabIndex = 9;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(972, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Informatii";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(972, 328);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Selecteaza un oras";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1250, 746);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.listBoxOrase);
             this.Controls.Add(this.comboBoxOrase);
             this.Controls.Add(this.button2);
@@ -168,6 +190,8 @@ namespace ProiectEAV
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBoxOrase;
         private System.Windows.Forms.ListBox listBoxOrase;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
